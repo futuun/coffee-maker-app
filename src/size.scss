@@ -1,0 +1,11 @@
+@import "./var.scss";
+
+.cup-size {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  overflow: hidden;
+  width: $app-width;
+  height: $content-section-height;
+}
