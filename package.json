@@ -1,0 +1,24 @@
+{
+  "name": "coffee-maker-app",
+  "version": "1.0.0",
+  "description": "prototype of coffee maker app designed by Gal Shir",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "todo"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/futuun/coffee-maker-app.git"
+  },
+  "keywords": [
+    "coffee",
+    "coffee-maker-app",
+    "im-not-good-with-keywords"
+  ],
+  "author": "Michał Mokijewski",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/futuun/coffee-maker-app/issues"
+  },
+  "homepage": "https://github.com/futuun/coffee-maker-app#readme"
+}
