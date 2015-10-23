@@ -48,7 +48,12 @@ const Size = React.createClass({
     let cups = this.state.cups.map((cup, i) => {
       return (
         <div key={ i }
-            className="cup-size__icon"
+            className={ this.props.viewsValues.size === cup.name
+                   ? "cup-size__icon selected"
+                   : "cup-size__icon"
+            // add class selected to clicked item (for animation purpose)
+            // selected item should expand and cover whole section
+          }
             onClick={ this.handleClick.bind(this, cup.name) }
         >
           <svg viewBox="0 0 200 160">

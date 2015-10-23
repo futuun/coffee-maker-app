@@ -56,3 +56,134 @@
     }
   }
 }
+
+
+@keyframes cup-2 {
+  0% {
+    transform: translate(-100%, 0%);
+  }
+
+  100% {
+    transform: translate(0%, 0%);
+    opacity: 1;
+  }
+}
+@keyframes cup-3 {
+  0% {
+    transform: translate(0%, -100%);
+  }
+
+  100% {
+    transform: translate(0%, 0%);
+    opacity: 1;
+  }
+}
+@keyframes cup-4 {
+  0% {
+    transform: translate(100%, 0%);
+  }
+
+  100% {
+    transform: translate(0%, 0%);
+    opacity: 1;
+  }
+}
+@keyframes cup-svg {
+  0% {
+    transform: scale(0);
+  }
+
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+@keyframes cup-p {
+  0% {
+    transform: translateY(30%);
+  }
+
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.open .cup-size__icon {
+  opacity: 0;
+  animation: .1s linear;
+  // animation-duration: 0.1s;
+  // animation-timing-function: ease-out;
+  animation-fill-mode: forwards;
+
+  @for $i from 1 through 4 {
+    &:nth-of-type(#{$i}) {
+      z-index: 4-$i;
+
+      @if ($i==1) {
+        // 1st and 2nd square has the same animation,
+        // i could make them separately but it's waste of precious bytes D;
+        animation-name: cup-2;
+      } @else {
+        animation-name: cup-#{$i};
+      }
+
+      // ($i * 0.1s) === (($i / 10) * 1s)) and will return 0.[$i]s
+      // for example if $i==3 it will return 0.3s
+
+      animation-delay: ($i * 0.1s) - 0.1s;
+      // there is no delaty before 1st item so we have to subtract .1s
+      // 1st item will have 0s delay, 2nd 0.1s, 3rd 0.2s and 4th 0.3s
+
+      svg {
+        animation-delay: ($i * 0.1s); // + 0.0s if that matters for you
+      }
+
+      p {
+        animation-delay: ($i * 0.1s) + 0.1s;
+      }
+    }
+  }
+
+  p {
+    opacity: 0;
+    animation: cup-p .1s ease-out;
+    animation-fill-mode: forwards;
+  }
+
+  svg {
+    opacity: 0;
+    animation: cup-svg .1s linear;
+    animation-fill-mode: forwards;
+  }
+}
+
+@keyframes cup-close {
+  0% {
+    transform: scale(1);
+  }
+
+  100% {
+    transform: scale(3);
+  }
+}
+@keyframes cup-p-svg-close {
+  0% {
+    transform: scale(1);
+  }
+
+  100% {
+    transform: scale(0);
+    opacity: 0;
+  }
+}
+
+.close .selected {
+  animation: cup-close .2s linear;
+  animation-fill-mode: forwards;
+
+  svg, p {
+    animation: cup-p-svg-close .1s linear;
+    animation-fill-mode: forwards;
+  }
+}
