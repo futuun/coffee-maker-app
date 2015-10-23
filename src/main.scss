@@ -1,0 +1,57 @@
+@import "./var.scss";
+
+body {
+  background: radial-gradient(
+                circle at top left,
+                nth($body-bg, 1),
+                nth($body-bg, 2),
+                nth($body-bg, 3)
+              );
+}
+
+.coffee-app {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate3d(-50%, -50%, 0); // for safari <3
+  width: $app-width;
+  height: $app-height;
+  border-radius: 2vh;
+  overflow: hidden;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  background: linear-gradient(
+                  to right,
+                  nth($app-background, 1) 0%,
+                  nth($app-background, 2) 90%
+              );
+  color: $primary-color;
+  box-shadow: 2vh 2vh 4vh -1vh rgba(0, 0, 0, 0.33),
+             -2vh 2vh 6vh -1vh rgba(0, 0, 0, 0.33);
+
+  &__title {
+    display: flex;
+    align-items: flex-end;
+    width: $app-width;
+    height: $title-section-height;
+    font-size: 4vh;
+
+    & > p {
+      padding: 0 0 6.3vh 6.4vh;
+      margin: 0;
+    }
+  }
+
+  &__content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    width: $app-width;
+    height: $content-section-height;
+  }
+}
