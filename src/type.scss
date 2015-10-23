@@ -46,7 +46,6 @@
   }
 }
 
-
 @keyframes type {
   0% {
     transform: scaleX(0.2);
@@ -58,6 +57,7 @@
     opacity: 1;
   }
 }
+
 @keyframes type-svg {
   0% {
     transform: scale(0.3);
@@ -69,6 +69,7 @@
     opacity: 1;
   }
 }
+
 @keyframes type-p {
   0% {
     transform: translateX(-10%);
@@ -115,11 +116,8 @@
 
 @keyframes type-close {
   0% {
-    opacity: 1;
-  }
-
-  40% {
     transform: scaleX(1);
+    opacity: 1;
   }
 
   100% {
@@ -128,33 +126,56 @@
   }
 }
 
+@keyframes type-svg-close {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+
+  100% {
+    transform: scale(0);
+    opacity: 0;
+  }
+}
+
+@keyframes type-p-close {
+  0% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateX(-10%);
+    opacity: 0;
+  }
+
+}
+
 .close .milk-type__icon {
-  animation: type-close .08s linear;
+  animation: type-close .1s linear;
   animation-fill-mode: forwards;
 
   @for $i from 4 through 1 {
     &:nth-of-type(#{$i}) {
-      animation-delay: ($i * 0.04s);
+      animation-delay: ($i * 0.05s) + 0.03s;
 
       svg {
-        animation-delay: ($i * 0.02s) + 0.02s;
+        animation-delay: ($i * 0.03s) + 0.03s;
       }
 
       p {
-        animation-delay: ($i * 0.03s) - 0.03s;
+        animation-delay: ($i * 0.03s) + 0.01s;
       }
     }
   }
 
   svg {
-    animation: type-svg .03s linear;
-    animation-direction: reverse;
+    animation: type-svg-close .05s linear;
     animation-fill-mode: forwards;
   }
 
   p {
-    animation: type-p .03s linear;
-    animation-direction: reverse;
+    animation: type-p-close .05s linear;
     animation-fill-mode: forwards;
   }
 }
