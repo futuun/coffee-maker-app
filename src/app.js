@@ -4,6 +4,11 @@ import './main.scss'
 import Size from './size.js'
 import Type from './type.js'
 import Balance from './balance.js'
+import Foam from './foam.js'
+
+// while compiling Object.assign with babel i've got weird error in IE,
+// i was to lazy to debug this issues properly so i've used this polifir instead
+import assign from 'object-assign'
 
 var viewsValues = {
   size    : null,
@@ -21,11 +26,14 @@ const App = React.createClass({
 
   nextView() {
     this.setState({ currentView : this.state.currentView + 1 });
+
+    // if it was last view go to first one
+    if (this.state.currentView === 3) this.setState({ currentView : 0 });
   },
 
   saveValues(value) {
     return () => {
-      viewsValues = Object.assign({}, viewsValues, value)
+      viewsValues = assign({}, viewsValues, value)
     }.bind(this)();
   },
 
@@ -60,6 +68,13 @@ const App = React.createClass({
                   <Balance viewsValues={ viewsValues }
                            nextView={ this.nextView }
                            saveValues={ this.saveValues } />
+                );
+
+              case 3:
+                return(
+                  <Foam viewsValues={ viewsValues }
+                        nextView={ this.nextView }
+                        saveValues={ this.saveValues } />
                 );
 
               default: null;
