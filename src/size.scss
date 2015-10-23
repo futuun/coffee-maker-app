@@ -28,10 +28,10 @@
                         nth($size-palette-b, $i)
                     );
       }
-    } // paint all 'icons' has different colors
+    } // all 'icons' has different colors it'll paint them using color palette
 
     &:nth-of-type(3) { // 3rd icon will be last icon in DOM
-      order: 1; // (because by default all items have order equal zero)
+      order: 1; // (because by default all items in flexbox have order equal zero)
     }
     // i think i will need this later because normally i will look like this:
     // 1 2
