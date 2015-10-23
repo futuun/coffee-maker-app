@@ -40,10 +40,7 @@ const Size = React.createClass({
 
   handleClick(value) {
     // value === name of the cup size
-    let data = {
-      size : value,
-    };
-    this.props.saveValues(data);
+    this.props.saveValues({ size : value });
     this.props.nextView();
   },
 

@@ -41,11 +41,8 @@ const Type = React.createClass({
     }
   },
 
-  handleClick(argumentValue) {
-    let data = {
-      type : argumentValue,
-    }
-    this.props.saveValues(data);
+  handleClick(value) {
+    this.props.saveValues({ type : value });
     this.props.nextView();
   },
 
