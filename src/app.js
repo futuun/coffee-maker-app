@@ -28,11 +28,13 @@ const App = React.createClass({
   nextView() {
     this.setState({ modifier : ' close' });
     setTimeout(() => {
+      this.setState({ modifier : ' open' });
       this.setState({ currentView : this.state.currentView + 1 });
 
       // if it was last view go to first one
-      if (this.state.currentView === 3) this.setState({ currentView : 0 });
-      this.setState({ modifier : ' open' });
+      if (this.state.currentView === 4) {
+        this.setState({ currentView : 0 });
+      }
     }, 300);
 
     // simply add class 'close' to app, wait 300ms and then go to next view

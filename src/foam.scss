@@ -68,3 +68,99 @@
     }
   }
 }
+
+@keyframes foam-value {
+  0% {
+    transform: translateY(20%);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateY(0%);
+    opacity: 1;
+  }
+}
+
+@keyframes foam-cup {
+  0% {
+    transform: scale(0.4);
+    opacity: 0;
+  }
+
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes foam-slider {
+  0% {
+    opacity: .4;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+.open .foam {
+  .slider {
+    opacity: 0;
+    animation: foam-slider .3s linear;
+    animation-fill-mode: forwards;
+  }
+
+  .foam__adjust__cup {
+    svg {
+      opacity: 0;
+      animation: foam-cup .4s linear;
+      animation-fill-mode: forwards;
+    }
+
+    .value {
+      animation: foam-value .3s linear;
+      animation-fill-mode: forwards;
+    }
+  }
+}
+
+@keyframes foam-cup-close {
+  0% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes foam-value-close {
+  0% {
+    transform: translateY(0%);
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateY(20%);
+    opacity: 0;
+  }
+}
+
+
+.close .foam {
+  .foam__adjust__cup {
+    svg {
+      animation: foam-cup-close .21s linear;
+      animation-fill-mode: forwards;
+    }
+
+    .value {
+      animation: foam-value-close .12s linear;
+      animation-fill-mode: forwards;
+    }
+  }
+
+  .next {
+    opacity: 0;
+  }
+}

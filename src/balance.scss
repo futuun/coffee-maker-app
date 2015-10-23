@@ -32,3 +32,49 @@
     $transform: translate(-50%, -60%)
   );
 }
+
+// oh god i forgot that it's not possible to animate SVG in IE/EDGE..
+// back to js..
+
+@keyframes balance {
+  0% {
+    transform: translateY(10%);
+    opacity: 0.2;
+  }
+
+  100%{
+    transform: translateY(0%);
+    opacity: 1;
+  }
+}
+
+.open .milk-balance {
+  p {
+    opacity: 0;
+    animation: balance 0.2s linear .1s;
+    animation-fill-mode: forwards;
+  }
+}
+
+@keyframes balance-close {
+  0% {
+    transform: translateY(0%);
+    opacity: 1;
+  }
+
+  100%{
+    transform: translateY(-10%);
+    opacity: 0;
+  }
+}
+
+.close .milk-balance {
+  p {
+    animation: balance-close 0.3s linear;
+    animation-fill-mode: forwards;
+  }
+
+  .next{
+    opacity: 0;
+  }
+}
