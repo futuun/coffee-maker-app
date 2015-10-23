@@ -16,7 +16,8 @@ $title-section-height: 21vh; // well.. it's 23,(076923)% of app height
 $content-section-height: 70vh; // $app-height - $title-section-height;
 $size-cup-width: 28vh; //$app-width / 2;
 $size-cup-height: 35vh; // $content-section-height/ 2;
-$milk-type-bar: 17.5vh; // $content-section-height / 4;
+$milk-type-bar-height: 17.5vh; // $content-section-height / 4;
+$milk-type-bar-width: 20.125vh; // $milk-type-bar / 100 * 115;
 $slider-width: 35vh; // $app-width / 1.6;
 
 $open-animation-duration: 0.6s;

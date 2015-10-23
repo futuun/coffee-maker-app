@@ -2,6 +2,7 @@ import React from 'react'
 import './main.scss'
 
 import Size from './size.js'
+import Type from './type.js'
 
 var viewsValues = {
   size    : null,
@@ -18,12 +19,12 @@ const App = React.createClass({
   },
 
   nextView() {
-    this.setState({ currentViewr : currentView + 1 });
+    this.setState({ currentView : this.state.currentView + 1 });
   },
 
   saveValues(value) {
     return () => {
-      viewsValues = assign({}, viewsValues, value)
+      viewsValues = Object.assign({}, viewsValues, value)
     }.bind(this)();
   },
 
@@ -43,6 +44,13 @@ const App = React.createClass({
               case 0:
                 return (
                   <Size viewsValues={ viewsValues }
+                        nextView={ this.nextView }
+                        saveValues={ this.saveValues } />
+                );
+
+              case 1:
+                return(
+                  <Type viewsValues={ viewsValues }
                         nextView={ this.nextView }
                         saveValues={ this.saveValues } />
                 );

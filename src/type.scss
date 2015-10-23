@@ -1,0 +1,47 @@
+@import "./var.scss";
+
+.milk-type {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: $app-width;
+  height: $content-section-height;
+  background: linear-gradient(
+                  to right bottom,
+                  nth($balance-and-foam-background, 1),
+                  nth($balance-and-foam-background, 2)
+              );
+
+  &__icon {
+    cursor: pointer;
+    height: $milk-type-bar-height;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    // i think i have déjà-vu
+
+    @for $i from 1 through 4 {
+      &:nth-of-type(#{$i}) {
+        background-color: rgba(nth($milk-type-palette, $i), 0.8);
+      }
+    }
+
+    svg {
+      height: $milk-type-bar-height;
+      width: $milk-type-bar-width;
+      stroke-width: 3;
+      fill: none;
+      stroke: $primary-color;
+      stroke-linejoin: round;
+      stroke-linecap: round;
+    }
+
+    p {
+      margin: 0;
+      font-size: 2.75vh;
+      color: $secondary-color;
+    }
+  }
+}
