@@ -2,10 +2,36 @@ import React from 'react'
 import './foam.scss'
 import Slider from './slider.js'
 
+var myReq, start = null;
+
 const Foam = React.createClass({
   getInitialState() {
     return {
-      value: 0
+      value: 0,
+      millisecondsPassed: 0,
+      close: false
+    }
+  },
+
+  componentDidMount() {
+    start = null;
+    // start animation right after component mount
+    myReq = window.requestAnimationFrame(this.animationFrame);
+  },
+
+  componentWillUnmount() {
+    // stop animation before unmounting
+    window.cancelAnimationFrame(myReq);
+  },
+
+  animationFrame(timestamp) {
+    if (!start) start = timestamp;
+
+    this.setState({ millisecondsPassed : timestamp - start });
+    // well it's not realy a frame,
+
+    if (this.state.millisecondsPassed < 600) {
+      myReq = window.requestAnimationFrame(this.animationFrame);
     }
   },
 
@@ -15,15 +41,48 @@ const Foam = React.createClass({
 
   handleClick() {
     this.props.saveValues({ foam : this.state.value });
+    // if this.state.close === true it will send differend object to children
+    this.setState({ close : true });
+
+    window.cancelAnimationFrame(myReq);
+    start = 0; // restart starting point
+    myReq = window.requestAnimationFrame(this.animationFrame);
+
     this.props.nextView();
   },
 
   render() {
+    let open = {
+      fillLowerWidth: 112,
+      fillLowerTransform: 'rotate(0)',
+
+      fillUpperOpacity: '1',
+      fillUpperTransform: 'translate(0)',
+
+      thumbR: 9,
+      thumbPos: 'translate('
+          + Math.max(112 - this.state.millisecondsPassed / 3, 0)
+          + ')',
+    };
+
+    let close = {
+      fillLowerWidth: 112,
+      fillLowerTransform: 'scale('+Math.max(1 - this.state.millisecondsPassed / 200, 0) +',1)',
+
+      fillUpperOpacity: '1',
+      fillUpperTransform: 'scale('+ Math.max(1 - this.state.millisecondsPassed / 200, 0) +',1)',
+
+      thumbR: Math.max(this.state.millisecondsPassed > 200 ? 20 - this.state.millisecondsPassed / 20 : 9, 0),
+      thumbPos: 'translate(-'+ Math.min(this.state.millisecondsPassed / 3 , this.state.value) + ')',
+    };
+
     return(
       <div className="foam">
         <div className="foam__adjust">
 
           <Slider
+            styles={ this.state.close ? close : open }
+            frame={ this.state.millisecondsPassed }
             handleValue={ this.handleValue }
             value={ this.state.value }
           />
