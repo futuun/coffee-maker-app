@@ -20,15 +20,24 @@ var viewsValues = {
 const App = React.createClass({
   getInitialState() {
     return {
-      currentView: 0
+      currentView: 0,
+      modifier: ' open'
     };
   },
 
   nextView() {
-    this.setState({ currentView : this.state.currentView + 1 });
+    this.setState({ modifier : ' close' });
+    setTimeout(() => {
+      this.setState({ currentView : this.state.currentView + 1 });
 
-    // if it was last view go to first one
-    if (this.state.currentView === 3) this.setState({ currentView : 0 });
+      // if it was last view go to first one
+      if (this.state.currentView === 3) this.setState({ currentView : 0 });
+      this.setState({ modifier : ' open' });
+    }, 300);
+
+    // simply add class 'close' to app, wait 300ms and then go to next view
+    // it may seem dumb but adding listners to animationend will
+    // drastically affect performance...
   },
 
   saveValues(value) {
@@ -41,7 +50,7 @@ const App = React.createClass({
     let title = ['Size', 'Milk Type', 'Milk Balance', 'Foam'];
 
     return (
-      <div className="coffee-app">
+      <div className={'coffee-app' + this.state.modifier}>
         <div className="coffee-app__title">
           <p>{ title[this.state.currentView] }</p>
         </div>
