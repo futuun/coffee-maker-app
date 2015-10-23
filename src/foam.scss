@@ -1,0 +1,89 @@
+@import "./var.scss";
+@import "./slider.scss";
+@import "./button_next.scss";
+
+.foam {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  position: relative;
+  width: $app-width;
+  height: $content-section-height;
+  background: linear-gradient(
+                  to right bottom,
+                  nth($balance-and-foam-background, 1),
+                  nth($balance-and-foam-background, 2)
+              );
+
+  .foam__adjust {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    width: $app-width;
+    height: ($app-width / 8) * 7;
+
+    .slider {
+      top: 35%;
+      left: 5%;
+      transform: translate(-25%, -50%) rotate(90deg);
+
+      circle {
+        fill: $secondary-color;
+      }
+
+      #fill--upper {
+        stop {
+          stop-color: $secondary-color;
+        }
+      }
+
+      rect:nth-of-type(1) {
+        fill: $primary-color;
+      }
+    }
+
+    .slider,
+    .slider__root,
+    .slider__svg {
+      width: $slider-width;
+      height: $slider-width / 5.6; // looks like only firefox need this
+    }
+
+    &__cup {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      align-items: flex-start;
+      width: ($app-width / 5) * 3; // it took 192 out of 320px on gif
+      height: 35vh;
+
+      svg {
+        width: 26.5vh;
+        height: 21vh;
+        fill: $secondary-color;
+
+        path:not(:nth-of-type(3)) {
+          // 3rd path === milk foam (no stroke, with fill)
+          stroke-width: 4;
+          fill: none;
+          stroke: $primary-color;
+          stroke-linejoin: round;
+          stroke-linecap: round;
+        }
+      }
+
+      .value {
+        font-family: 'latohairline';
+        font-size: 10.5vh;
+        margin: 0;
+        width: 30vh;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+      }
+    }
+  }
+}
