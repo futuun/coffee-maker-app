@@ -1,0 +1,23 @@
+$primary-color: #f6d282; // icons etc
+$secondary-color: #fff; // text belove icons
+$tertiary-color: #6df; // lower-fill from milk-balance scrollbar
+$body-bg:  #fcfaf0, #d5d1b6, #d9d4d2; // radial gradient from top-left
+$app-background: #ce5169, #a53d59; // linear-gradient to right
+$size-palette-a: #a04463, #7e355f, #402344, #593054;
+$size-palette-b: #7d355b, #602a55, #2e183f, #452449;
+$milk-type-palette: #512a51, #45204d, #381d46, #2e183f;
+$balance-and-foam-background: #593054, #3f2046; // radial gradient, top left
+
+// i've opened this gif in gimp and i tried my beast measuring whole app
+// so if i got everything right here are proportions i should use
+$app-height: 91vh; // 7vh * 13;
+$app-width: 56vh;  // 7vh * 8;
+$title-section-height: 21vh; // well.. it's 23,(076923)% of app height
+$content-section-height: 70vh; // $app-height - $title-section-height;
+$size-cup-width: 28vh; //$app-width / 2;
+$size-cup-height: 35vh; // $content-section-height/ 2;
+$milk-type-bar: 17.5vh; // $content-section-height / 4;
+$slider-width: 35vh; // $app-width / 1.6;
+
+$open-animation-duration: 0.6s;
+$close-animation-duration: 0.3s;
