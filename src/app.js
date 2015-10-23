@@ -3,6 +3,7 @@ import './main.scss'
 
 import Size from './size.js'
 import Type from './type.js'
+import Balance from './balance.js'
 
 var viewsValues = {
   size    : null,
@@ -31,7 +32,6 @@ const App = React.createClass({
   render () {
     let title = ['Size', 'Milk Type', 'Milk Balance', 'Foam'];
 
-
     return (
       <div className="coffee-app">
         <div className="coffee-app__title">
@@ -53,6 +53,13 @@ const App = React.createClass({
                   <Type viewsValues={ viewsValues }
                         nextView={ this.nextView }
                         saveValues={ this.saveValues } />
+                );
+
+              case 2:
+                return(
+                  <Balance viewsValues={ viewsValues }
+                           nextView={ this.nextView }
+                           saveValues={ this.saveValues } />
                 );
 
               default: null;

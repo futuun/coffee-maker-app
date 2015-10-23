@@ -1,0 +1,53 @@
+@import "./var.scss";
+@import "./slider.scss";
+@import "./button_next.scss";
+
+.milk-balance {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  position: relative;
+  width: $app-width;
+  height: $content-section-height;
+  background: linear-gradient(
+                  to right bottom,
+                  nth($balance-and-foam-background, 1),
+                  nth($balance-and-foam-background, 2)
+              );
+
+  p {
+    font-family: 'latohairline';
+    font-size: 13vh;
+    margin: 0;
+    padding: 13vh 0;
+  }
+
+  .slider {
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -60%);
+
+    circle {
+      fill: $secondary-color;
+    }
+
+    #fill--upper {
+      stop {
+        stop-color: $secondary-color;
+      }
+    }
+
+    rect:nth-of-type(1) {
+      fill: $tertiary-color;
+    }
+  }
+
+  .slider,
+  .slider__root,
+  .slider__svg {
+    width: $slider-width;
+    height: $slider-width / 5.6; // looks like only firefox need this
+  }
+}

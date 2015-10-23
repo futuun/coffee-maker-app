@@ -1,0 +1,29 @@
+@import "./var.scss";
+
+// since milk balance and foam have identical 'next' button
+// i can just write style once and pass this to both components
+
+.next {
+  font-family: 'latolight';
+  display: flex;
+  cursor: pointer;
+  font-size: 3vh;
+  padding: .6vh;
+  margin-bottom: 5.5vh;
+  text-decoration: none;
+  background: none;
+  border: none;
+  color: $secondary-color;
+
+  &:focus {
+    outline: none;
+  }
+
+  &:hover {
+    transform:scale(0.96);
+  }
+
+  &:active {
+    opacity: .1;
+  }
+}

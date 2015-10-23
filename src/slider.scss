@@ -1,0 +1,111 @@
+@import "./var.scss";
+
+// we are hiding default input range and creating svg representation on the top
+// for cross-broswer styling
+
+/* autoprefixer: off */
+input[type=range] {
+  @mixin track {
+    width: 100%;
+    height: 100%;
+    margin: 0px;
+    padding: 0px;
+    color: transparent;
+    overflow: visible;
+    border: 0 none;
+    background: transparent;
+  }
+
+  @include track;
+  -webkit-appearance: none;
+
+  &:focus {
+    outline: none;
+
+    &::-webkit-slider-runnable-track {
+      background: transparent;
+      border: transparent;
+    }
+  }
+
+  &::-ms-track {
+    @include track;
+  }
+
+  &::-moz-range-track {
+    @include track;
+    -moz-appearance: none;
+  }
+
+  &::-webkit-slider-runnable-track {
+    @include track;
+    -webkit-appearance: none;
+  }
+
+  @mixin thumb {
+    width: 50px;
+    height: 50px;
+    border-radius: 0px;
+    border: 0 none;
+    background: transparent;
+  }
+
+  &::-ms-thumb {
+    @include thumb;
+  }
+
+  &::-moz-range-thumb {
+    @include thumb;
+    -moz-appearance: none;
+  }
+
+  &::-webkit-slider-thumb {
+    @include thumb;
+    -webkit-appearance: none;
+  }
+
+  // Eliminate the default appearance and tooltip in IE/Edge
+  @mixin hide-border-and-background {
+    border: 0 none;
+    background: transparent;
+  }
+
+  &::-ms-fill-lower {
+    @include hide-border-and-background;
+  }
+
+  &::-ms-fill-upper {
+    @include hide-border-and-background;
+  }
+
+  &::-ms-tooltip {
+    display: none;
+  }
+}
+ /* autoprefixer: on */
+
+.slider {
+  border: 0 none;
+  left: 0;
+  top: 0;
+  overflow: visible;
+  position: absolute;
+
+  &__root,
+  &__svg {
+    position: absolute;
+    overflow: visible;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+// make sure that invisible input range is above our svg
+  &__svg {
+    z-index: 19;
+  }
+
+  &__root {
+    z-index: 20;
+  }
+}
