@@ -1,11 +1,41 @@
 @import "./var.scss";
 
+@mixin style-slider(
+  $fill-upper-color: null,
+  $fill-lower-color: null,
+  $top: null,
+  $left: null,
+  $transform: null
+) {
+
+  .slider {
+    top: $top;
+    left: $left;
+    transform: $transform;
+
+    circle {
+      fill: $fill-upper-color;
+    }
+
+    #fill--upper {
+      stop {
+        stop-color: $fill-upper-color;
+      }
+    }
+
+    rect:nth-of-type(1) {
+      fill: $fill-lower-color;
+    }
+  }
+}
+
 // we are hiding default input range and creating svg representation on the top
 // for cross-broswer styling
 
 /* autoprefixer: off */
 input[type=range] {
   @mixin track {
+    cursor: pointer;
     width: 100%;
     height: 100%;
     margin: 0px;
@@ -43,6 +73,7 @@ input[type=range] {
   }
 
   @mixin thumb {
+    cursor: pointer;
     width: 50px;
     height: 50px;
     border-radius: 0px;
@@ -108,4 +139,11 @@ input[type=range] {
   &__root {
     z-index: 20;
   }
+}
+
+.slider,
+.slider__root,
+.slider__svg {
+  width: $slider-width;
+  height: $slider-width / 5.6; // looks like only firefox need this
 }
