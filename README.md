@@ -1,2 +1,7 @@
-# coffee-maker-app
-prototype of coffee maker app, design from #Dribbble by @galgalshir 
+# Usage:
+
+`npm start`
+to start react-hot-loader on localhost:1337
+
+`npm run build`
+to compile project
