@@ -8,4 +8,51 @@
   overflow: hidden;
   width: $app-width;
   height: $content-section-height;
+
+  &__icon {
+    // well it's not realy 'icon'
+    // it's square with svg icon and paragraph on it
+    cursor: pointer; // for visual feedback
+    height: 50%;
+    width: 50%;
+    // not a rocket science, we need fit 4 of thease inside cup-size class and together they should took all space
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    @for $i from 1 through 4 {
+      &:nth-of-type(#{$i}) {
+        background: linear-gradient(
+                        to right bottom,
+                        nth($size-palette-a, $i),
+                        nth($size-palette-b, $i)
+                    );
+      }
+    } // paint all 'icons' has different colors
+
+    &:nth-of-type(3) { // 3rd icon will be last icon in DOM
+      order: 1; // (because by default all items have order equal zero)
+    }
+    // i think i will need this later because normally i will look like this:
+    // 1 2
+    // 3 4
+    // and we will need change 3rd and 4th item
+    // (since in animation 4 appears before 3)
+    // there are propably other ways of doing it but
+
+    svg {
+      width: $app-width / 2;
+      height: $app-width / 2.5;
+      stroke-width: 4;
+      fill: none;
+      stroke: $primary-color;
+      stroke-linejoin: round;
+    }
+
+    p {
+      margin-top: 2.75vh;
+      font-size: 2.75vh;
+      color: $secondary-color;
+    }
+  }
 }
